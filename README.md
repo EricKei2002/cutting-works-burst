@@ -2,7 +2,7 @@
 
 # Cutting Works Burst
 
-Next.js 15 + TypeScript + Tailwind CSS + Framer Motion によるポートフォリオサイトです。スクロール時のフェードやホバー演出を取り入れ、作品ギャラリーをシンプルに閲覧できます。
+Next.js 15 + TypeScript + Tailwind CSS + Framer Motion によるWEBサイトです。スクロール時のフェードやホバー演出を取り入れ、作品ギャラリーをシンプルに閲覧できます。
 
 - フレームワーク: Next.js (App Router)
 - 言語: TypeScript

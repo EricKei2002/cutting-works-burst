@@ -3,13 +3,44 @@ export type WorkItem = {
   id: number;
   src: string;
   alt: string;
+  description: string;
 };
 
 export const worksItems: WorkItem[] = [
-  { id: 1, src: "/works/work-signage.svg", alt: "LED サインデザイン" },
-  { id: 2, src: "/works/work-vehicle.svg", alt: "車両ラッピング" },
-  { id: 3, src: "/works/work-decal.svg", alt: "カッティングデカールキット" },
-  { id: 4, src: "/works/work-storefront.svg", alt: "店舗ウィンドウグラフィック" },
-  { id: 5, src: "/works/work-lettering.svg", alt: "レタリング＆タイプデザイン" },
-  { id: 6, src: "/works/work-helmet.svg", alt: "ヘルメット用グラフィック" },
+  {
+    id: 1,
+    src: "/works/works1.jpg",
+    alt: "LED サインパネル",
+    description: "薄型LEDとプリントを組み合わせて、遠目でも色が映える屋内用サインを製作。",
+  },
+  {
+    id: 2,
+    src: "/works/works2.jpg",
+    alt: "店舗ウィンドウグラフィック",
+    description: "ガラス面にグラデーションフィルムとカッティングを重ね、昼夜問わずブランドを訴求。",
+  },
+  {
+    id: 3,
+    src: "/works/works3.jpg",
+    alt: "車両ラッピング",
+    description: "企業ロゴとストライプを組み合わせたフルラッピング。耐候性フィルムで美しいラインを維持。",
+  },
+  {
+    id: 4,
+    src: "/works/works4.png",
+    alt: "店舗ファサードカッティング",
+    description: "ゴールド系カッティングで外観をアップデート。マット仕上げで上品にロゴを浮かび上がらせます。",
+  },
+  {
+    id: 5,
+    src: "/works/works5.png",
+    alt: "レタリング＆タイプデザイン",
+    description: "カスタムレタリングをカッティングで再現。視認性と個性のバランスが取れた看板文字。",
+  },
+  {
+    id: 6,
+    src: "/works/works6.jpg",
+    alt: "ヘルメット用グラフィック",
+    description: "曲面に沿うよう分割設計したヘルメット用デカール。ラメ調フィルムで質感も演出。",
+  },
 ];

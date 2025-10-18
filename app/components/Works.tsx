@@ -78,11 +78,11 @@ export function Works() {
     <section id="works" className="w-full py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
         <Reveal>
-          <h2 className="text-[22px] md:text-[28px] font-semibold tracking-tight">
+          <h2 className="text-[22px] md:text-[28px] font-semibold tracking-tight text-foreground">
             Works
           </h2>
         </Reveal>
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {worksItems.map((item, idx) => (
             <Reveal key={item.id} delay={idx * 0.05}>
               <button
@@ -98,7 +98,13 @@ export function Works() {
                     src={item.src}
                     alt={item.alt}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover md:object-contain p-0 md:p-6 group-hover:opacity-95"
+                    className={`transition-transform duration-200 group-hover:scale-[1.01] group-hover:opacity-95 ${
+                      item.id === 4 || item.id === 5
+                        ? "object-contain bg-neutral-200/40 dark:bg-neutral-800/40"
+                        : item.id === 6
+                          ? "object-cover scale-125"
+                          : "object-cover"
+                    }`}
                   />
                 </div>
                 <span className="sr-only">{item.alt} を拡大表示</span>
@@ -136,7 +142,7 @@ export function Works() {
                   src={activeWork.src}
                   alt={activeWork.alt}
                   sizes="(max-width: 640px) 100vw, (max-width: 1200px) 60vw, 960px"
-                  className="object-contain"
+                  className={activeWork.id === 4 || activeWork.id === 5 ? "object-contain" : "object-cover"}
                   priority
                 />
               </div>
@@ -153,7 +159,7 @@ export function Works() {
                   id={captionId}
                   className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300"
                 >
-                  ハイライトを拡大表示しています。詳細情報や制作背景はご希望に応じて追加できます。
+                  {activeWork.description}
                 </p>
               </div>
             </div>

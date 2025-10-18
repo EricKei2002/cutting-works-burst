@@ -45,7 +45,7 @@ function PricingTable({
       <h3 className="text-lg font-semibold tracking-tight text-foreground/90">
         {title}
       </h3>
-      <div className="mt-4 overflow-x-auto">
+      <div className="mt-4 overflow-x-auto hidden md:block">
         <table className="min-w-full border-separate border-spacing-y-1 text-sm">
           <thead>
             <tr className="text-foreground/70">
@@ -78,6 +78,30 @@ function PricingTable({
           </tbody>
         </table>
       </div>
+      <div className="mt-4 flex flex-col gap-3 md:hidden">
+        {rows.map((rowLabel, rowIndex) => (
+          <div
+            key={rowLabel}
+            className="rounded-2xl border border-foreground/10 bg-background/95 p-4 shadow-sm"
+          >
+            <div className="flex items-center justify-between text-sm font-semibold text-foreground/85">
+              <span>{rowLabel} 縦</span>
+            </div>
+            <div className="mt-3 grid grid-cols-2 gap-y-2 gap-x-4 text-sm text-foreground/70">
+              {columns.map((column, columnIndex) => (
+                <div key={`${rowLabel}-${column}`} className="flex items-center justify-between">
+                  <span className="text-xs uppercase tracking-[0.18em] text-foreground/50">
+                    {column}
+                  </span>
+                  <span className="text-sm font-medium text-foreground/85">
+                    ¥{data[rowIndex]?.[columnIndex]?.toLocaleString() ?? "-"}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
       <p className="mt-3 text-xs text-foreground/50">
         ※ 横幅・縦幅ともに上記サイズに合わせてカットします。金額は税抜表記です。
       </p>
@@ -87,7 +111,7 @@ function PricingTable({
 
 export function Pricing() {
   return (
-    <section className="w-full py-24 md:py-32 bg-background">
+    <section id="pricing" className="w-full bg-background py-24 md:py-32">
       <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6">
         <Reveal>
           <div className="space-y-3">

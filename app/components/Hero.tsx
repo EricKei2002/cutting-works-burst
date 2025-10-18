@@ -24,80 +24,96 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden py-40 md:py-56 min-h-[90vh]">
-      <div aria-hidden className="absolute inset-0 -z-10">
-        <Image
-          src="/image.png"
-          alt="スタジオ背景"
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/35 to-black/10" />
-      </div>
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(56,189,248,0.35),transparent_55%),radial-gradient(circle_at_80%_60%,rgba(249,115,22,0.25),transparent_50%)]" />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(120deg,rgba(255,255,255,0.05)_0%,transparent_40%,rgba(255,255,255,0.08)_100%)] mix-blend-screen" />
-      <div className="hero-entry-overlay" data-active={isReady} aria-hidden />
-      <div
-        className="hero-entry relative z-10 mx-auto flex max-w-5xl flex-col gap-8 px-6 py-12 text-white"
-        data-active={isReady}
-      >
-        <Reveal>
-          <div className="space-y-6 backdrop-blur-[2px]">
-            <h1 className="text-[clamp(40px,6vw,76px)] font-semibold tracking-tight text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.65)]">
-              cutting works burst
-            </h1>
-            <p className="text-[clamp(18px,3vw,26px)] font-medium text-white/85 drop-shadow-[0_6px_20px_rgba(0,0,0,0.55)]">
-              切り文字ステッカー&デザイン制作スタジオ。
-            </p>
-            <p className="max-w-2xl text-sm leading-relaxed text-white/80 drop-shadow-[0_6px_20px_rgba(0,0,0,0.55)]">
-              お店看板、クルマやバイクのドレスアップなど、多彩なカッティングワークを1枚から丁寧に仕上げます。
-            </p>
-            <div className="mt-4 flex flex-wrap items-center gap-4">
-              <Link
-                href="#works"
-                className={buttonClasses(
-                  "default",
-                  "default",
-                  "bg-white/95 text-slate-900 shadow-lg shadow-black/25 transition-transform duration-300 hover:-translate-y-0.5",
-                )}
-              >
-                作品を見る
-              </Link>
-              <Link
-                href="#contact"
-                className={buttonClasses(
-                  "outline",
-                  "default",
-                  "border-white/70 text-white transition-transform duration-300 hover:-translate-y-0.5",
-                )}
-              >
-                お問い合わせ
-              </Link>
+    <div id="swup" className="transition-fade">
+      <section className="relative w-full overflow-hidden py-48 md:py-56">
+        <div
+          className={`absolute inset-0 -z-10 transition-opacity duration-1000 ${isReady ? "opacity-0" : "opacity-100"}`}
+        >
+          <Image
+            src="/BG HERO.png"
+            alt="バックグラウンド"
+            fill
+            priority
+            className="object-cover"
+          />
+        </div>
+        <div
+          className={`hero-entry relative z-10 mx-auto grid min-h-[60vh] max-w-6xl items-center gap-10 px-6 text-white md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] transition-all duration-1000 ease-out ${isReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          data-active={isReady}
+        >
+          <Reveal delay={0.5}>
+            <div className="order-1 w-full md:order-2">
+              <div className="relative mx-auto aspect-[3/4] w-full overflow-hidden rounded-3xl border border-white/15 bg-white/5 shadow-[0_40px_120px_-50px_rgba(0,0,0,0.45)] md:mx-0 md:aspect-[4/3]">
+                <Image
+                  src="/bg cwb.png"
+                  alt="制作風景"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 40vw"
+                  className="object-cover object-[50%_40%] scale-[1.15] md:scale-100"
+                />
+              </div>
             </div>
-          </div>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <div className="flex flex-wrap gap-10 text-sm text-white/75">
-            <div className="backdrop-blur-[2px]">
-              <p className="text-xs uppercase tracking-[0.28em] text-white/55">Services</p>
-              <p className="mt-2 text-base font-medium text-white/85">
-                カッティングシート制作 / レタリングデザイン / 車両・店舗サイン施工
-              </p>
+          </Reveal>
+          <Reveal>
+            <div className="order-2 flex flex-col items-center gap-8 text-center md:order-1 md:items-start md:text-left">
+              <div className="space-y-6 md:space-y-8">
+                <h1 className="text-[clamp(40px,6vw,76px)] font-semibold tracking-tight text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.65)]">
+                  cutting works burst
+                </h1>
+                <p className="text-[clamp(18px,3vw,26px)] font-medium text-white/85 drop-shadow-[0_6px_20px_rgba(0,0,0,0.55)] lg:mt-4">
+                  切り文字ステッカー&デザイン制作スタジオ。
+                </p>
+                <p className="mx-auto max-w-2xl text-sm leading-relaxed text-white/80 drop-shadow-[0_6px_20px_rgba(0,0,0,0.55)] md:mx-0">
+                  お店看板、クルマやバイクのドレスアップなど、多彩なカッティングワークを1枚から丁寧に仕上げます。
+                </p>
+              </div>
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-3 md:justify-start">
+                <Link
+                  href="#about"
+                  className={buttonClasses(
+                    "ghost",
+                    "default",
+                    "bg-white/10 text-white/90 border border-white/30 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-0.5 hover:bg-white/15",
+                  )}
+                >
+                  About Us
+                </Link>
+                <Link
+                  href="#works"
+                  className={buttonClasses(
+                    "ghost",
+                    "default",
+                    "bg-white/10 text-white/90 border border-white/30 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-0.5 hover:bg-white/15",
+                  )}
+                >
+                  作品を見る
+                </Link>
+                <Link
+                  href="#pricing"
+                  className={buttonClasses(
+                    "ghost",
+                    "default",
+                    "bg-white/10 text-white/90 border border-white/30 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-0.5 hover:bg-white/15",
+                  )}
+                >
+                  料金表を見る
+                </Link>
+                <Link
+                  href="#contact"
+                  className={buttonClasses(
+                    "ghost",
+                    "default",
+                    "bg-white/10 text-white/90 border border-white/30 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-0.5 hover:bg-white/15",
+                  )}
+                >
+                  問い合わせる
+                </Link>
+              </div>
             </div>
-            <div className="backdrop-blur-[2px]">
-              <p className="text-xs uppercase tracking-[0.28em] text-white/55">Based in</p>
-              <p className="mt-2 text-base font-medium text-white/85">Nagano, Japan</p>
-            </div>
-            <div className="backdrop-blur-[2px]">
-              <p className="text-xs uppercase tracking-[0.28em] text-white/55">Motto</p>
-              <p className="mt-2 text-base font-medium text-white/85">
-                コンパクトでも質感豊かで長く愛されるサインを。
-              </p>
-            </div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
+          </Reveal>
+        </div>
+      </section>
+    </div>
   );
 }

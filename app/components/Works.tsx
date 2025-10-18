@@ -64,8 +64,9 @@ export function Works() {
     style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
 
-    if (closeButtonRef.current) {
-      closeButtonRef.current.focus();
+    const closeButton = closeButtonRef.current;
+    if (closeButton && window.matchMedia("(min-width: 1024px)").matches) {
+      closeButton.focus();
     }
 
     return () => {
@@ -129,7 +130,7 @@ export function Works() {
               ref={closeButtonRef}
               type="button"
               onClick={() => setActiveWork(null)}
-              className="absolute right-6 top-6 flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200/70 bg-white/90 text-[17px] font-semibold text-neutral-800 shadow-sm transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400/70 dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 dark:focus-visible:ring-white/40"
+              className="hidden h-9 w-9 items-center justify-center rounded-full border border-neutral-200/70 bg-white/90 text-[17px] font-semibold text-neutral-800 shadow-sm transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400/70 dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 dark:focus-visible:ring-white/40 lg:absolute lg:right-6 lg:top-6 lg:flex"
             >
               <span aria-hidden>×</span>
               <span className="sr-only">閉じる</span>

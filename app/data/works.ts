@@ -4,6 +4,7 @@ export type WorkItem = {
   src: string;
   alt: string;
   description: string;
+  previewSrc?: string;
 };
 
 export const worksItems: WorkItem[] = [
@@ -40,6 +41,7 @@ export const worksItems: WorkItem[] = [
   {
     id: 6,
     src: "/works/works6.jpg",
+    previewSrc: "/works/IMG_7128.jpg",
     alt: "ヘルメット用グラフィック",
     description: "曲面に沿うよう分割設計したヘルメット用デカール。ラメ調フィルムで質感も演出。",
   },

@@ -95,15 +95,13 @@ export function Works() {
               >
                 <div className="relative aspect-[4/3]">
                   <WorkImage
-                    src={item.src}
+                    src={item.previewSrc ?? item.src}
                     alt={item.alt}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className={`transition-transform duration-200 group-hover:scale-[1.01] group-hover:opacity-95 ${
                       item.id === 4 || item.id === 5
                         ? "object-contain bg-neutral-200/40 dark:bg-neutral-800/40"
-                        : item.id === 6
-                          ? "object-cover scale-125"
-                          : "object-cover"
+                        : "object-cover"
                     }`}
                   />
                 </div>
@@ -142,7 +140,11 @@ export function Works() {
                   src={activeWork.src}
                   alt={activeWork.alt}
                   sizes="(max-width: 640px) 100vw, (max-width: 1200px) 60vw, 960px"
-                  className={activeWork.id === 4 || activeWork.id === 5 ? "object-contain" : "object-cover"}
+                  className={
+                    activeWork.id === 4 || activeWork.id === 5 || activeWork.id === 6
+                      ? "object-contain"
+                      : "object-cover"
+                  }
                   priority
                 />
               </div>

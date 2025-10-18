@@ -76,13 +76,13 @@ export function Works() {
 
   return (
     <section id="works" className="w-full py-24 md:py-32">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <Reveal>
           <h2 className="text-[22px] md:text-[28px] font-semibold tracking-tight text-foreground">
             Works
           </h2>
         </Reveal>
-        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {worksItems.map((item, idx) => (
             <Reveal key={item.id} delay={idx * 0.05}>
               <button
@@ -93,12 +93,12 @@ export function Works() {
                 }}
                 className="group relative w-full overflow-hidden rounded-xl border border-foreground/10 bg-background text-left transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40"
               >
-                <div className="relative aspect-[4/3]">
+                <div className="relative aspect-square sm:aspect-[4/3]">
                   <WorkImage
                     src={item.previewSrc ?? item.src}
                     alt={item.alt}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className={`transition-transform duration-200 group-hover:scale-[1.01] group-hover:opacity-95 ${
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1400px) 20vw, 15vw"
+                    className={`transition-transform duration-200 group-hover:scale-[1.02] group-hover:opacity-95 ${
                       item.id === 4 || item.id === 5
                         ? "object-contain bg-neutral-200/40 dark:bg-neutral-800/40"
                         : "object-cover"

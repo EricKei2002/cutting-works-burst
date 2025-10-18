@@ -1,0 +1,32 @@
+<svg width="960" height="640" viewBox="0 0 960 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="40" x2="840" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1f2937" />
+    </linearGradient>
+    <linearGradient id="accent" x1="200" y1="140" x2="760" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0.35" />
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="640" rx="40" fill="url(#bg)" />
+  <rect x="120" y="120" width="720" height="400" rx="28" fill="#111827" />
+  <rect x="160" y="170" width="640" height="300" rx="22" fill="url(#accent)" opacity="0.8" />
+  <rect x="200" y="210" width="560" height="80" rx="18" fill="rgba(15,23,42,0.8)" />
+  <rect x="200" y="320" width="260" height="90" rx="18" fill="#1f2937" />
+  <rect x="500" y="320" width="260" height="90" rx="18" fill="#1f2937" />
+
+  <text x="240" y="260" fill="#e2e8f0" font-family="'Inter', 'Helvetica Neue', Arial" font-size="38" font-weight="600">
+    SIGNAGE DESIGN
+  </text>
+  <text x="220" y="380" fill="#cbd5f5" font-family="'Inter', 'Helvetica Neue', Arial" font-size="28" font-weight="500" letter-spacing="0.05em">
+    LED BACKLIT PANEL
+  </text>
+  <text x="520" y="380" fill="#cbd5f5" font-family="'Inter', 'Helvetica Neue', Arial" font-size="26" font-weight="500" letter-spacing="0.04em">
+    CUSTOM LETTERING
+  </text>
+
+  <circle cx="200" cy="120" r="28" fill="#38bdf8" />
+  <circle cx="760" cy="520" r="18" fill="#6366f1" opacity="0.75" />
+</svg>

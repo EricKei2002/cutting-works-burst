@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useAnimation, type Variants } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
+import { useEffect, useRef, useState } from "react";
 
 interface RevealProps {
   children: React.ReactNode;
@@ -9,18 +9,9 @@ interface RevealProps {
   delay?: number;
 }
 
-const variants: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
-
 export function Reveal({ children, className, delay = 0 }: RevealProps) {
-  const controls = useAnimation();
   const ref = useRef<HTMLDivElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const element = ref.current;
@@ -30,27 +21,32 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            controls.start("visible");
+            setIsVisible(true);
+            observer.disconnect();
           }
         });
       },
-      { threshold: 0.2 },
+      {
+        threshold: [0, 0.35, 0.6],
+        rootMargin: "0px 0px -10% 0px",
+      },
     );
 
     observer.observe(element);
-    return () => observer.disconnect();
-  }, [controls]);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      className={className}
-      initial="hidden"
-      animate={controls}
-      variants={variants}
-      transition={{ delay }}
+      data-visible={isVisible}
+      className={cn("reveal-element", className)}
+      style={{ transitionDelay: `${delay}s` }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

@@ -1,42 +1,100 @@
 "use client";
 
+import { buttonClasses } from "@/lib/button";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { Reveal } from "../components/Reveal";
 
 export function Hero() {
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 24) {
+        setIsReady(true);
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <section className="relative w-full overflow-hidden py-28 md:py-40">
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+    <section className="relative w-full overflow-hidden py-40 md:py-56 min-h-[90vh]">
+      <div aria-hidden className="absolute inset-0 -z-10">
         <Image
-          src="/hero-bg.svg"
-          alt=""
+          src="/image.png"
+          alt="スタジオ背景"
           fill
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/65 to-white dark:from-black/80 dark:via-black/70 dark:to-black" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_22%,rgba(255,255,255,0.65),transparent_55%),radial-gradient(circle_at_82%_18%,rgba(255,255,255,0.4),transparent_45%),radial-gradient(circle_at_52%_88%,rgba(255,255,255,0.45),transparent_50%)] dark:bg-[radial-gradient(circle_at_20%_28%,rgba(10,10,10,0.55),transparent_60%),radial-gradient(circle_at_78%_20%,rgba(10,10,10,0.5),transparent_45%),radial-gradient(circle_at_50%_92%,rgba(10,10,10,0.55),transparent_55%)]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/35 to-black/10" />
       </div>
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(56,189,248,0.35),transparent_55%),radial-gradient(circle_at_80%_60%,rgba(249,115,22,0.25),transparent_50%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(120deg,rgba(255,255,255,0.05)_0%,transparent_40%,rgba(255,255,255,0.08)_100%)] mix-blend-screen" />
+      <div className="hero-entry-overlay" data-active={isReady} aria-hidden />
+      <div
+        className="hero-entry relative z-10 mx-auto flex max-w-5xl flex-col gap-8 px-6 py-12 text-white"
+        data-active={isReady}
+      >
         <Reveal>
-          <h1 className="text-[clamp(32px,6vw,64px)] font-extrabold tracking-tight leading-[1.05] bg-clip-text text-transparent bg-[linear-gradient(180deg,rgba(0,0,0,0.92),rgba(0,0,0,0.6))] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(255,255,255,0.6))]">
-            Cutting Works Burst
-          </h1>
+          <div className="space-y-6 backdrop-blur-[2px]">
+            <h1 className="text-[clamp(40px,6vw,76px)] font-semibold tracking-tight text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.65)]">
+              cutting works burst
+            </h1>
+            <p className="text-[clamp(18px,3vw,26px)] font-medium text-white/85 drop-shadow-[0_6px_20px_rgba(0,0,0,0.55)]">
+              切り文字ステッカー&デザイン制作スタジオ。
+            </p>
+            <p className="max-w-2xl text-sm leading-relaxed text-white/80 drop-shadow-[0_6px_20px_rgba(0,0,0,0.55)]">
+              お店看板、クルマやバイクのドレスアップなど、多彩なカッティングワークを1枚から丁寧に仕上げます。
+            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-4">
+              <Link
+                href="#works"
+                className={buttonClasses(
+                  "default",
+                  "default",
+                  "bg-white/95 text-slate-900 shadow-lg shadow-black/25 transition-transform duration-300 hover:-translate-y-0.5",
+                )}
+              >
+                作品を見る
+              </Link>
+              <Link
+                href="#contact"
+                className={buttonClasses(
+                  "outline",
+                  "default",
+                  "border-white/70 text-white transition-transform duration-300 hover:-translate-y-0.5",
+                )}
+              >
+                お問い合わせ
+              </Link>
+            </div>
+          </div>
         </Reveal>
         <Reveal delay={0.1}>
-          <p className="mt-5 text-[15px] md:text-base text-foreground/75 max-w-2xl">
-            クリエイティブを切り拓く、ポートフォリオ＆ワークスギャラリー。
-          </p>
-        </Reveal>
-        <Reveal delay={0.2}>
-          <div className="mt-9">
-            <Link
-              href="#works"
-              className="inline-flex items-center justify-center rounded-full bg-foreground text-background px-6 py-3 text-sm font-medium transition-transform duration-200 hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0"
-            >
-              作品を見る
-            </Link>
+          <div className="flex flex-wrap gap-10 text-sm text-white/75">
+            <div className="backdrop-blur-[2px]">
+              <p className="text-xs uppercase tracking-[0.28em] text-white/55">Services</p>
+              <p className="mt-2 text-base font-medium text-white/85">
+                カッティングシート制作 / レタリングデザイン / 車両・店舗サイン施工
+              </p>
+            </div>
+            <div className="backdrop-blur-[2px]">
+              <p className="text-xs uppercase tracking-[0.28em] text-white/55">Based in</p>
+              <p className="mt-2 text-base font-medium text-white/85">Nagano, Japan</p>
+            </div>
+            <div className="backdrop-blur-[2px]">
+              <p className="text-xs uppercase tracking-[0.28em] text-white/55">Motto</p>
+              <p className="mt-2 text-base font-medium text-white/85">
+                コンパクトでも質感豊かで長く愛されるサインを。
+              </p>
+            </div>
           </div>
         </Reveal>
       </div>

@@ -1,0 +1,42 @@
+<svg width="960" height="640" viewBox="0 0 960 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="letter-bg" x1="120" y1="80" x2="880" y2="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="640" rx="32" fill="url(#letter-bg)" />
+
+  <g transform="translate(180 160)">
+    <path
+      d="M120 40H220C260 40 290 70 290 110C290 150 260 180 220 180H170V320H120V40Z"
+      fill="#020617"
+      stroke="url(#stroke)"
+      stroke-width="6"
+    />
+    <path
+      d="M360 140C360 90 400 50 460 50C520 50 560 90 560 140C560 190 520 230 460 230C400 230 360 190 360 140Z"
+      fill="#020617"
+      stroke="url(#stroke)"
+      stroke-width="6"
+    />
+    <path
+      d="M640 80H740V120H675V160H730V200H675V320H640V80Z"
+      fill="#020617"
+      stroke="url(#stroke)"
+      stroke-width="6"
+    />
+  </g>
+
+  <text x="220" y="460" fill="#f8fafc" font-family="'Inter', 'Helvetica Neue', Arial" font-size="42" font-weight="600" letter-spacing="0.12em">
+    LETTERING / TYPE DESIGN
+  </text>
+  <text x="220" y="502" fill="#94a3b8" font-family="'Inter', 'Helvetica Neue', Arial" font-size="22" letter-spacing="0.32em">
+    CUSTOM SCRIPT &amp; LOGO MARKS
+  </text>
+</svg>

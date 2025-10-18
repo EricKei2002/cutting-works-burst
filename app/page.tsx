@@ -4,6 +4,8 @@ import { Works } from "./components/Works";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 
+export const dynamic = "force-static";
+
 export default function Home() {
   return (
     <div className="font-sans">

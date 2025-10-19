@@ -1,56 +1,26 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "../components/Reveal";
 
 export function Contact() {
   return (
-    <section id="contact" className="w-full py-24 md:py-32 bg-background">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="contact" className="w-full bg-background py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-6">
         <Reveal>
-          <h2 className="text-[22px] md:text-[28px] font-semibold tracking-tight">
+          <h2 className="text-[22px] md:text-[28px] font-semibold tracking-tight text-foreground">
             Contact
           </h2>
         </Reveal>
-        <div className="mt-8 grid md:grid-cols-[240px_1fr] gap-8 items-start">
-          <Reveal>
-            <div className="relative w-[200px] h-[200px] rounded-lg overflow-hidden border border-foreground/10 bg-white">
-              <Image
-                src="/file.svg"
-                alt="QR Code"
-                fill
-                className="object-contain p-6"
-              />
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="#"
-                  className="text-foreground hover:underline hover:underline-offset-4"
-                >
-                  X / Twitter
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-foreground hover:underline hover:underline-offset-4"
-                >
-                  Instagram
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-foreground hover:underline hover:underline-offset-4"
-                >
-                  LinkedIn
-                </Link>
-              </li>
-            </ul>
-          </Reveal>
-        </div>
+        <Reveal delay={0.05}>
+          <div className="mt-8 rounded-3xl border border-foreground/10 bg-surface p-8 text-center shadow-sm backdrop-blur dark:border-white/15 dark:bg-white/10">
+            <p className="text-sm text-foreground/70">メールでのお問い合わせはこちら</p>
+            <Link
+              href="mailto:cutting.works.burst@gmail.com"
+              className="mt-3 inline-block text-[20px] font-semibold tracking-wide text-foreground hover:underline hover:underline-offset-4"
+            >
+              cutting.works.burst@gmail.com
+            </Link>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

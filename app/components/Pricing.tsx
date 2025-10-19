@@ -105,6 +105,12 @@ function PricingTable({
       <p className="mt-3 text-xs text-foreground/50">
         ※ 横幅・縦幅ともに上記サイズに合わせてカットします。金額は税抜表記です。
       </p>
+      <p className="mt-1 text-xs text-foreground/50">
+        ※2㎝未満の文字や細かい書体や画数の多い漢字3㎜以下のせんなどはカットできない場合がございます。
+      </p>
+      <p className="mt-1 text-xs text-foreground/50">
+        ※小さい点や細かいラインは、施工後粘着面積が少ないので剝がれやすくなります。
+      </p>
     </div>
   );
 }

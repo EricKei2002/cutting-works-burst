@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
 import { Reveal } from "../components/Reveal";
@@ -100,7 +99,7 @@ export function Works() {
                     alt={item.alt}
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1400px) 20vw, 15vw"
                     className={`transition-transform duration-200 group-hover:scale-[1.02] group-hover:opacity-95 ${
-                      item.id === 4 || item.id === 5
+                      item.id === 4 || item.id === 5 || item.id === 6
                         ? "object-contain bg-neutral-200/40 dark:bg-neutral-800/40"
                         : "object-cover"
                     }`}

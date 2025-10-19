@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SwupTransition } from "./components/SwupTransition";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import { ThemeProvider } from "./components/ThemeProvider";
+import { ThemeToggle } from "./components/ThemeToggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -72,20 +75,42 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
-        <SwupTransition />
-        <div
-          id="swup"
-          data-swup-transition
-          className="relative min-h-screen overflow-hidden"
-        >
-          {children}
-        </div>
-        <Analytics />
-        <span aria-hidden className="swup-overlay" />
+        <Script id="theme-initializer" strategy="beforeInteractive">
+          {`
+            (function(){
+              try {
+                var storageKey = 'burst-theme';
+                var root = document.documentElement;
+                var stored = localStorage.getItem(storageKey);
+                var mql = window.matchMedia('(prefers-color-scheme: dark)');
+                var theme = stored === 'light' || stored === 'dark' ? stored : (mql.matches ? 'dark' : 'light');
+                root.dataset.theme = theme;
+                root.classList.toggle('dark', theme === 'dark');
+                root.style.setProperty('color-scheme', theme);
+              } catch (error) {
+                console.warn('Theme init failed', error);
+              }
+            })();
+          `}
+        </Script>
+        <ThemeProvider>
+          <SwupTransition />
+          <ThemeToggle className="fixed right-5 top-5 z-[60]" />
+          <div
+            id="swup"
+            data-swup-transition
+            className="relative min-h-screen overflow-hidden"
+          >
+            {children}
+          </div>
+          <Analytics />
+          <span aria-hidden className="swup-overlay" />
+        </ThemeProvider>
       </body>
     </html>
   );

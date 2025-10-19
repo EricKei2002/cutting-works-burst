@@ -1,116 +1,37 @@
 import { Reveal } from "../components/Reveal";
 
-const rows = ["5cm", "10cm", "15cm", "20cm"] as const;
-
-const columnsFirst = [
-  "5cm",
-  "10cm",
-  "15cm",
-  "20cm",
-  "25cm",
-  "30cm",
-  "35cm",
-  "40cm",
-  "45cm",
-  "50cm",
-] as const;
-
-const dataFirst = [
-  [300, 400, 500, 700, 900, 1100, 1300, 1500, 1700, 1900],
-  [400, 500, 700, 900, 1100, 1300, 1500, 1700, 1900, 2100],
-  [500, 700, 900, 1100, 1300, 1500, 1700, 1900, 2100, 2300],
-  [700, 900, 1100, 1300, 1500, 1700, 1900, 2100, 2300, 2500],
+const tierData = [
+  {
+    label: "Sサイズ",
+    size: "最長辺 〜15cm",
+    price: "¥500〜",
+    examples: "ショップロゴ・ワンポイントに最適",
+  },
+  {
+    label: "Mサイズ",
+    size: "最長辺 15〜40cm",
+    price: "¥1,200〜",
+    examples: "車両用サイドステッカー・ガラス面",
+  },
+  {
+    label: "Lサイズ",
+    size: "最長辺 40〜70cm",
+    price: "¥2,600〜",
+    examples: "サインボード・イベント装飾",
+  },
+  {
+    label: "XLサイズ",
+    size: "最長辺 70〜100cm",
+    price: "¥3,800〜",
+    examples: "看板・大型ディスプレイ",
+  },
 ];
 
-const columnsSecond = ["50cm", "60cm", "70cm", "80cm", "90cm", "100cm"] as const;
-
-const dataSecond = [
-  [1900, 2300, 2700, 3100, 3500, 3900],
-  [2100, 2500, 2900, 3300, 3700, 4100],
-  [2300, 2700, 3100, 3500, 3900, 4300],
-  [2500, 2900, 3300, 3700, 4100, 4500],
+const addOnData = [
+  { label: "耐候フィルムラミネート", detail: "屋外での色褪せ・汚れ対策", price: "¥600〜/㎡" },
+  { label: "デザイン制作", detail: "ラフ案からのオリジナルデザイン", price: "¥5,000〜" },
+  { label: "データ持ち込み調整", detail: "Ai / PDF / PNG / JPG に対応", price: "無料〜¥2,000" },
 ];
-
-function PricingTable({
-  title,
-  columns,
-  data,
-}: {
-  title: string;
-  columns: readonly string[];
-  data: readonly (readonly number[])[];
-}) {
-  return (
-    <div className="rounded-3xl border border-foreground/10 bg-background/95 p-6 shadow-sm">
-      <h3 className="text-lg font-semibold tracking-tight text-foreground/90">
-        {title}
-      </h3>
-      <div className="mt-4 overflow-x-auto hidden md:block">
-        <table className="min-w-full border-separate border-spacing-y-1 text-sm">
-          <thead>
-            <tr className="text-foreground/70">
-              <th className="w-20 py-2 text-left text-xs uppercase tracking-[0.18em]">縦</th>
-              {columns.map((column) => (
-                <th key={column} className="px-3 py-2 text-right text-xs uppercase tracking-[0.14em]">
-                  {column}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((rowLabel, rowIndex) => (
-              <tr key={rowLabel} className="rounded-lg bg-foreground/5">
-                <td className="rounded-l-lg px-3 py-3 text-left font-medium text-foreground/85">
-                  {rowLabel}
-                </td>
-                {columns.map((column, columnIndex) => (
-                  <td
-                    key={`${rowLabel}-${column}`}
-                    className={`px-3 py-3 text-right text-foreground/80 ${
-                      columnIndex === columns.length - 1 ? "rounded-r-lg" : ""
-                    }`}
-                  >
-                    ¥{data[rowIndex]?.[columnIndex]?.toLocaleString() ?? "-"}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div className="mt-4 flex flex-col gap-3 md:hidden">
-        {rows.map((rowLabel, rowIndex) => (
-          <div
-            key={rowLabel}
-            className="rounded-2xl border border-foreground/10 bg-background/95 p-4 shadow-sm"
-          >
-            <div className="flex items-center justify-between text-sm font-semibold text-foreground/85">
-              <span>{rowLabel} 縦</span>
-            </div>
-            <div className="mt-3 grid grid-cols-2 gap-y-2 gap-x-4 text-sm text-foreground/70">
-              {columns.map((column, columnIndex) => (
-                <div key={`${rowLabel}-${column}`} className="flex items-center justify-between">
-                  <span className="text-xs uppercase tracking-[0.18em] text-foreground/50">
-                    {column}
-                  </span>
-                  <span className="text-sm font-medium text-foreground/85">
-                    ¥{data[rowIndex]?.[columnIndex]?.toLocaleString() ?? "-"}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-      <p className="mt-1 text-xs text-foreground/50">
-        ※2㎝未満の文字や細かい書体や画数の多い漢字3㎜以下のせんなどはカットできない場合がございます。
-      </p>
-      <p className="mt-1 text-xs text-foreground/50">
-        ※小さい点や細かいラインは、施工後粘着面積が少ないので剝がれやすくなります。
-      </p>
-    </div>
-  );
-}
 
 export function Pricing() {
   return (
@@ -126,12 +47,51 @@ export function Pricing() {
             </p>
           </div>
         </Reveal>
-        <div className="grid gap-10 lg:grid-cols-2">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
           <Reveal>
-            <PricingTable title="5cm〜50cm（5cm刻み）" columns={columnsFirst} data={dataFirst} />
+            <div className="rounded-[32px] border border-foreground/10 bg-surface/95 p-6 shadow-[0_20px_60px_-40px_rgba(15,23,42,0.45)] dark:bg-white/10">
+              <h3 className="text-sm font-semibold uppercase tracking-[0.28em] text-foreground/60">Standard Plans</h3>
+              <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                {tierData.map((tier) => (
+                  <div
+                    key={tier.label}
+                    className="rounded-3xl border border-foreground/10 bg-background/95 p-5 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg dark:bg-white/10"
+                  >
+                    <div className="flex items-baseline justify-between gap-2">
+                      <p className="text-base font-semibold text-foreground">{tier.label}</p>
+                      <span className="text-xs tracking-[0.28em] text-foreground/45">{tier.size}</span>
+                    </div>
+                    <p className="mt-3 text-[clamp(20px,3vw,28px)] font-semibold text-foreground">{tier.price}</p>
+                    <p className="mt-2 text-sm text-foreground/70">{tier.examples}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-6 text-xs text-foreground/50">
+                仕上がりサイズ・カット内容により最終金額をお見積もりいたします。複数枚・大量注文もご相談ください。
+              </p>
+            </div>
           </Reveal>
-          <Reveal delay={0.05}>
-            <PricingTable title="50cm〜100cm（10cm刻み）" columns={columnsSecond} data={dataSecond} />
+          <Reveal delay={0.08}>
+            <div className="flex h-full flex-col justify-between gap-6 rounded-[28px] border border-foreground/10 bg-background/95 p-6 shadow-[0_16px_50px_-35px_rgba(15,23,42,0.4)] dark:bg-white/10">
+              <div>
+                <h3 className="text-sm font-semibold uppercase tracking-[0.26em] text-foreground/60">Options</h3>
+                <ul className="mt-4 space-y-4">
+                  {addOnData.map((item) => (
+                    <li key={item.label} className="rounded-2xl border border-foreground/10 bg-foreground/[0.04] p-4 dark:bg-white/10">
+                      <div className="flex items-baseline justify-between gap-4">
+                        <p className="text-sm font-semibold text-foreground">{item.label}</p>
+                        <span className="text-sm font-semibold text-foreground/80">{item.price}</span>
+                      </div>
+                      <p className="mt-1 text-xs text-foreground/60">{item.detail}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-2xl border border-dashed border-foreground/20 bg-foreground/[0.03] p-4 text-xs text-foreground/60 dark:bg-white/5">
+                <p>※2㎝未満の文字や細かい書体・3㎜以下の細線はカットできない場合があります。</p>
+                <p className="mt-1">※小さな点や細いラインは粘着面積が少なく、剥がれやすくなる可能性があります。</p>
+              </div>
+            </div>
           </Reveal>
         </div>
       </div>

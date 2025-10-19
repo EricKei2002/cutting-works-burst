@@ -54,7 +54,8 @@ export function Pricing() {
                 {tierData.map((tier) => (
                   <div
                     key={tier.label}
-                    className="rounded-3xl border border-foreground/10 bg-background/95 p-5 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg dark:bg-white/10"
+                    
+                  className="cursor-pointer rounded-3xl border border-foreground/10 bg-background/95 p-5 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg dark:bg-white/10"
                   >
                     <div className="flex items-baseline justify-between gap-2">
                       <p className="text-base font-semibold text-foreground">{tier.label}</p>

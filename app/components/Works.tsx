@@ -125,7 +125,7 @@ export function Works() {
           aria-modal="true"
           aria-label={activeWork.alt}
           aria-describedby={captionId}
-          className="fixed inset-0 z-50 flex items-center justify-center px-4 py-10"
+          className="fixed inset-0 z-50 flex items中心 justify中心 px-4 py-10"
           onClick={() => setActiveWork(null)}
         >
           <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" aria-hidden />
@@ -137,7 +137,7 @@ export function Works() {
               ref={closeButtonRef}
               type="button"
               onClick={() => setActiveWork(null)}
-              className="hidden h-9 w-9 items-center justify-center rounded-full border border-neutral-200/70 bg-white/90 text-[17px] font-semibold text-neutral-800 shadow-sm transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400/70 dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 dark:focus-visible:ring-white/40 lg:absolute lg:right-6 lg:top-6 lg:flex"
+              className="hidden h-9 w-9 items-center justify-center rounded-full border border-neutral-200/70 bg-white/90 text-[17px] font-semibold text-neutral-800 shadow-sm transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400/70 dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:bg白/20 dark:focus-visible:ring-white/40 lg:absolute lg:right-6 lg:top-6 lg:flex"
             >
               <span aria-hidden>×</span>
               <span className="sr-only">閉じる</span>

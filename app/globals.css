@@ -18,14 +18,6 @@
   color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-surface: var(--surface);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -51,144 +43,39 @@ body {
   "Segoe UI Emoji";
 }
 
-@keyframes loading-orb-float {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-    opacity: 0.35;
-  }
-  50% {
-    transform: translate3d(18px, -12px, 0) scale(1.08);
-    opacity: 0.5;
-  }
-}
-
-.loading-orb {
-  position: absolute;
-  filter: blur(50px);
-  border-radius: 9999px;
-  animation: loading-orb-float 6s ease-in-out infinite;
-}
-
-.loading-orb--cyan {
-  width: 360px;
-  height: 360px;
-  top: -90px;
-  left: -120px;
-  background: radial-gradient(circle at center, rgba(56, 189, 248, 0.55), rgba(37, 99, 235, 0.15));
-}
-
-.loading-orb--amber {
-  width: 320px;
-  height: 320px;
-  bottom: -110px;
-  right: -150px;
-  animation-delay: 1.5s;
-  background: radial-gradient(circle at center, rgba(249, 115, 22, 0.5), rgba(244, 114, 182, 0.18));
-}
-
-@keyframes hero-aurora-drift {
+@keyframes hero-shimmer {
   0% {
-    transform: translate3d(-4%, -2%, 0) scale(0.98);
-    opacity: 0.55;
-  }
-  45% {
-    transform: translate3d(6%, -8%, 0) scale(1.08);
-    opacity: 0.85;
+    background-position: 0% 50%;
   }
   100% {
-    transform: translate3d(14%, 6%, 0) scale(1);
-    opacity: 0.6;
+    background-position: 200% 50%;
   }
 }
 
-@keyframes hero-aurora-glide {
-  0% {
-    transform: translate3d(8%, 10%, 0) scale(0.88) rotate(-8deg);
-    opacity: 0.5;
+.hero-shimmer {
+  background-size: 200% 100%;
+  animation: hero-shimmer 3s linear infinite;
+}
+
+.hero-shimmer--delay-1 {
+  animation-delay: 1s;
+}
+
+.hero-shimmer--delay-2 {
+  animation-delay: 2s;
+}
+
+.hero-word {
+  display: block;
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-shimmer {
+    animation: none;
   }
-  50% {
-    transform: translate3d(-4%, -4%, 0) scale(1.08) rotate(6deg);
-    opacity: 0.82;
-  }
-  100% {
-    transform: translate3d(-12%, 12%, 0) scale(0.95) rotate(-4deg);
-    opacity: 0.6;
-  }
-}
-
-@keyframes hero-aurora-pulse {
-  0% {
-    transform: translate3d(4%, -6%, 0) scale(0.92);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translate3d(-8%, 4%, 0) scale(1.05);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translate3d(6%, 12%, 0) scale(0.94);
-    opacity: 0.55;
-  }
-}
-
-.hero-aurora {
-  overflow: hidden;
-}
-
-.hero-aurora__item {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(100px);
-  mix-blend-mode: screen;
-  opacity: 0.7;
-  transition: opacity 0.6s ease;
-  will-change: transform, opacity;
-}
-
-.hero-aurora__item--one {
-  top: -18%;
-  left: -16%;
-  width: clamp(260px, 42vw, 560px);
-  height: clamp(260px, 42vw, 560px);
-  background: radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.45), rgba(14, 165, 233, 0.15), transparent 70%);
-  animation: hero-aurora-drift 16s ease-in-out infinite alternate;
-}
-
-.hero-aurora__item--two {
-  bottom: -28%;
-  left: 25%;
-  width: clamp(240px, 38vw, 520px);
-  height: clamp(240px, 38vw, 520px);
-  background: radial-gradient(circle at 60% 40%, rgba(251, 191, 36, 0.35), rgba(244, 114, 182, 0.2), transparent 70%);
-  animation: hero-aurora-glide 18s ease-in-out infinite;
-}
-
-.hero-aurora__item--three {
-  top: 30%;
-  right: -18%;
-  width: clamp(220px, 32vw, 460px);
-  height: clamp(220px, 32vw, 460px);
-  background: radial-gradient(circle at 40% 50%, rgba(14, 165, 233, 0.4), rgba(99, 102, 241, 0.2), transparent 70%);
-  animation: hero-aurora-pulse 20s ease-in-out infinite alternate;
-}
-
-.dark .hero-aurora__item {
-  mix-blend-mode: lighten;
-  opacity: 0.55;
-  filter: blur(110px);
-}
-
-.dark .hero-aurora__item--one {
-  background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.52), rgba(59, 130, 246, 0.28), transparent 70%);
-}
-
-.dark .hero-aurora__item--two {
-  background: radial-gradient(circle at 60% 40%, rgba(249, 115, 22, 0.42), rgba(236, 72, 153, 0.28), transparent 70%);
-}
-
-.dark .hero-aurora__item--three {
-  background: radial-gradient(circle at 40% 50%, rgba(96, 165, 250, 0.45), rgba(129, 140, 248, 0.32), transparent 70%);
 }
 
 .reveal-element {
@@ -205,51 +92,4 @@ body {
   opacity: 1;
   transform: translateY(0);
   filter: blur(0);
-}
-
-.hero-entry {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1), transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.hero-entry[data-active="true"] {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hero-entry-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  background: linear-gradient(120deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.3));
-  opacity: 1;
-  transition: opacity 1s ease;
-  pointer-events: none;
-}
-
-.hero-entry-overlay[data-active="true"] {
-  opacity: 0;
-}
-
-.dialog-overlay {
-  backdrop-filter: blur(12px);
-  background: color-mix(in srgb, #020617 72%, transparent);
-  opacity: 0;
-  transition: opacity 180ms ease;
-}
-
-.dialog-overlay[data-state="open"] {
-  opacity: 1;
-}
-
-.dialog-content {
-  opacity: 0;
-  transform: translateY(16px) scale(0.98);
-  transition: opacity 220ms ease, transform 220ms ease;
-}
-
-.dialog-content[data-state="open"] {
-  opacity: 1;
-  transform: translateY(0) scale(1);
 }

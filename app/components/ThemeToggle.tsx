@@ -38,7 +38,29 @@ function MoonIcon(props: React.SVGProps<SVGSVGElement>) {
 export function ThemeToggle({ className }: ThemeToggleProps) {
   const { theme, toggleTheme, isReady } = useTheme();
 
-  const label = useMemo(() => (theme === "dark" ? "ライトモードに切り替える" : "ダークモードに切り替える"), [theme]);
+  const label = useMemo(() => {
+    if (!isReady) {
+      return "テーマモードを切り替える";
+    }
+    return theme === "dark" ? "ライトモードに切り替える" : "ダークモードに切り替える";
+  }, [isReady, theme]);
+
+  const sunClasses = useMemo(() => {
+    if (!isReady) {
+      return "h-5 w-5 transition-opacity duration-300 opacity-100";
+    }
+    return cn("h-5 w-5 transition-opacity duration-300", theme === "dark" ? "opacity-0" : "opacity-100");
+  }, [isReady, theme]);
+
+  const moonClasses = useMemo(() => {
+    if (!isReady) {
+      return "absolute h-5 w-5 transition-opacity duration-300 opacity-0";
+    }
+    return cn(
+      "absolute h-5 w-5 transition-opacity duration-300",
+      theme === "dark" ? "opacity-100" : "opacity-0",
+    );
+  }, [isReady, theme]);
 
   return (
     <button
@@ -54,15 +76,8 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
       title={label}
       disabled={!isReady}
     >
-      <SunIcon
-        className={cn("h-5 w-5 transition-opacity duration-300", theme === "dark" ? "opacity-0" : "opacity-100")}
-      />
-      <MoonIcon
-        className={cn(
-          "absolute h-5 w-5 transition-opacity duration-300",
-          theme === "dark" ? "opacity-100" : "opacity-0",
-        )}
-      />
+      <SunIcon className={sunClasses} />
+      <MoonIcon className={moonClasses} />
     </button>
   );
 }

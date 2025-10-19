@@ -17,7 +17,6 @@
     "next": "15.5.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "swup": "^4.8.2",
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {

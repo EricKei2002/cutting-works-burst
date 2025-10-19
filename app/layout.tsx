@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
-import { SwupTransition } from "./components/SwupTransition";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { ThemeToggle } from "./components/ThemeToggle";
+import { BackToTop } from "./components/BackToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -99,17 +99,10 @@ export default function RootLayout({
           `}
         </Script>
         <ThemeProvider>
-          <SwupTransition />
           <ThemeToggle className="fixed right-5 top-5 z-[60]" />
-          <div
-            id="swup"
-            data-swup-transition
-            className="relative min-h-screen overflow-hidden"
-          >
-            {children}
-          </div>
+          <BackToTop className="fixed left-5 bottom-8 z-[60]" />
+          <div className="relative min-h-screen overflow-hidden">{children}</div>
           <Analytics />
-          <span aria-hidden className="swup-overlay" />
         </ThemeProvider>
       </body>
     </html>

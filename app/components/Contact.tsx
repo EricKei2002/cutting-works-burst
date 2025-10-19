@@ -15,7 +15,7 @@ export function Contact() {
             <p className="text-sm text-foreground/70">メールでのお問い合わせはこちら</p>
             <Link
               href="mailto:cutting.works.burst@gmail.com"
-              className="mt-3 inline-block text-[20px] font-semibold tracking-wide text-foreground hover:underline hover:underline-offset-4"
+              className="mt-3 inline-block text-m font-semibold tracking-wide text-foreground hover:underline hover:underline-offset-4"
             >
               cutting.works.burst@gmail.com
             </Link>

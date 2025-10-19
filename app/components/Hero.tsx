@@ -57,7 +57,7 @@ export function Hero() {
                   "border border-slate-200/80 bg-gradient-to-r from-slate-900 via-slate-800 to-sky-700 text-white shadow-[0_18px_45px_-20px_rgba(15,23,42,0.65)] transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_60px_-20px_rgba(15,23,42,0.55)] dark:border-white/20 dark:bg-white/10 dark:bg-none dark:text-white dark:hover:bg-white/15",
                 )}
               >
-                About Us
+                サービス内容
               </Link>
               <Link
                 href="#works"

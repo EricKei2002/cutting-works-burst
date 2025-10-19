@@ -28,7 +28,6 @@ const tierData = [
 ];
 
 const addOnData = [
-  { label: "耐候フィルムラミネート", detail: "屋外での色褪せ・汚れ対策", price: "¥600〜/㎡" },
   { label: "デザイン制作", detail: "ラフ案からのオリジナルデザイン", price: "¥5,000〜" },
   { label: "データ持ち込み調整", detail: "Ai / PDF / PNG / JPG に対応", price: "無料〜¥2,000" },
 ];

@@ -68,6 +68,10 @@ export function Works() {
       closeButton.focus();
     }
 
+    if (!window.matchMedia("(min-width: 768px)").matches) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       style.overflow = previousOverflow;
@@ -88,6 +92,10 @@ export function Works() {
               <button
                 type="button"
                 onClick={(event) => {
+                  if (typeof window !== "undefined" && !window.matchMedia("(min-width: 768px)").matches) {
+                    return;
+                  }
+
                   lastTriggerRef.current = event.currentTarget;
                   setActiveWork(item);
                 }}
@@ -157,10 +165,7 @@ export function Works() {
                     {activeWork.alt}
                   </h3>
                 </div>
-                <p
-                  id={captionId}
-                  className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300"
-                >
+                <p id={captionId} className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
                   {activeWork.description}
                 </p>
               </div>

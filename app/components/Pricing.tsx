@@ -3,25 +3,25 @@ import { Reveal } from "../components/Reveal";
 const tierData = [
   {
     label: "Sサイズ",
-    size: "最長辺 〜15cm",
-    price: "¥500〜",
+    size: "最長辺 〜10cm",
+    price: "¥400〜",
     examples: "ショップロゴ・ワンポイントに最適",
   },
   {
     label: "Mサイズ",
-    size: "最長辺 15〜40cm",
-    price: "¥1,200〜",
+    size: "最長辺 10〜15cm",
+    price: "¥700〜",
     examples: "車両用サイドステッカー・ガラス面",
   },
   {
     label: "Lサイズ",
-    size: "最長辺 40〜70cm",
+    size: "最長辺 15〜25cm",
     price: "¥2,600〜",
     examples: "サインボード・イベント装飾",
   },
   {
     label: "XLサイズ",
-    size: "最長辺 70〜100cm",
+    size: "最長辺 25〜cm",
     price: "¥3,800〜",
     examples: "看板・大型ディスプレイ",
   },

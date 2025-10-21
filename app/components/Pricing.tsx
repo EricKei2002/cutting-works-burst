@@ -29,7 +29,7 @@ const tierData = [
 
 const addOnData = [
   { label: "デザイン制作", detail: "ラフ案からのオリジナルデザイン", price: "¥5,000〜" },
-  { label: "データ持ち込み調整", detail: "Ai / PDF / PNG / JPG に対応", price: "無料〜¥2,000" },
+  { label: "データ持ち込み調整", detail: "Ai / PDF / PNG / JPG に対応", price: "無料〜¥3,000" },
 ];
 
 export function Pricing() {

@@ -30,8 +30,7 @@ export function Hero() {
 
         <Reveal delay={0.1}>
           <p className="mt-10 max-w-3xl text-[22px] md:text-[28px] font-semibold tracking-tight text-foreground">
-            切り文字とヴィジュアルの力で、街に映えるサインを仕立てる。コンセプト設計から施工まで
-            ワンストップで走り抜けることで、スピードとクオリティを両立させます。
+          お店看板、クルマやバイクのドレスアップなど、多彩なカッティングステッカー・デザインを1枚から丁寧に仕上げます
           </p>
         </Reveal>
 

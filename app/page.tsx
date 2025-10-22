@@ -5,12 +5,12 @@ import { Works } from "./components/Works";
 import { Pricing } from "./components/Pricing";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
+import { homeDescription } from "@/lib/seo";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  description:
-    "カッティングシートや看板制作の実績を一覧できる Cutting Works Burst の公式サイト。料金プランやお問い合わせ方法もこちらから。",
+  description: homeDescription,
 };
 
 export default function Home() {

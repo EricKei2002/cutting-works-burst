@@ -8,6 +8,7 @@ import {
   useMemo,
   useState,
 } from "react";
+import { scheduleIdle } from "@/lib/utils";
 
 type Theme = "light" | "dark";
 
@@ -55,7 +56,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     applyTheme(theme);
     if (isReady) {
-      window.localStorage.setItem(STORAGE_KEY, theme);
+      scheduleIdle(() => {
+        window.localStorage.setItem(STORAGE_KEY, theme);
+      });
     }
   }, [theme, isReady]);
 
@@ -64,28 +67,42 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    if (typeof window === "undefined") return;
 
-    const handleMediaChange = (event: MediaQueryListEvent) => {
-      const storedTheme = window.localStorage.getItem(STORAGE_KEY);
-      if (storedTheme !== "light" && storedTheme !== "dark") {
-        setThemeState(event.matches ? "dark" : "light");
-      }
+    let mediaQuery: MediaQueryList | null = null;
+    let handleMediaChange: ((event: MediaQueryListEvent) => void) | undefined;
+    let handleStorage: ((event: StorageEvent) => void) | undefined;
+
+    const setup = () => {
+      mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      handleMediaChange = (event: MediaQueryListEvent) => {
+        const storedTheme = window.localStorage.getItem(STORAGE_KEY);
+        if (storedTheme !== "light" && storedTheme !== "dark") {
+          setThemeState(event.matches ? "dark" : "light");
+        }
+      };
+
+      mediaQuery.addEventListener("change", handleMediaChange);
+
+      handleStorage = (event: StorageEvent) => {
+        if (event.key === STORAGE_KEY && (event.newValue === "light" || event.newValue === "dark")) {
+          setThemeState(event.newValue);
+        }
+      };
+
+      window.addEventListener("storage", handleStorage);
     };
 
-    mediaQuery.addEventListener("change", handleMediaChange);
-
-    const handleStorage = (event: StorageEvent) => {
-      if (event.key === STORAGE_KEY && (event.newValue === "light" || event.newValue === "dark")) {
-        setThemeState(event.newValue);
-      }
-    };
-
-    window.addEventListener("storage", handleStorage);
+    const cancelIdleSetup = scheduleIdle(setup);
 
     return () => {
-      mediaQuery.removeEventListener("change", handleMediaChange);
-      window.removeEventListener("storage", handleStorage);
+      cancelIdleSetup?.();
+      if (mediaQuery && handleMediaChange) {
+        mediaQuery.removeEventListener("change", handleMediaChange);
+      }
+      if (handleStorage) {
+        window.removeEventListener("storage", handleStorage);
+      }
     };
   }, []);
 

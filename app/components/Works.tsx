@@ -12,27 +12,17 @@ type WorkImageProps = {
   priority?: boolean;
 };
 
-function WorkImage({
-  src,
-  alt,
-  className = "",
-  sizes,
-  priority = false,
-}: WorkImageProps) {
-  const [currentSrc, setCurrentSrc] = useState(src);
-
-  useEffect(() => {
-    setCurrentSrc(src);
-  }, [src]);
+function WorkImage({ src, alt, className = "", sizes, priority = false }: WorkImageProps) {
+  const [hasError, setHasError] = useState(false);
 
   return (
     <Image
-      src={currentSrc}
+      src={hasError ? "/file.svg" : src}
       alt={alt}
       fill
       sizes={sizes}
       className={`transition-opacity duration-200 ${className}`.trim()}
-      onError={() => setCurrentSrc("/file.svg")}
+      onError={() => setHasError(true)}
       priority={priority}
     />
   );

@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section className="flex w-full flex-col items-center justify-center overflow-hidden bg-background px-6 pb-32 pt-24">
       <div className="flex max-w-5xl flex-col items-center text-center">
-        <Reveal>
+        <Reveal initiallyVisible>
           <div className="space-y-6 uppercase text-foreground">
             <div className="space-y-4">
               <span className="hero-word hero-shimmer bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 bg-clip-text text-[clamp(48px,10vw,120px)] tracking-[-0.06em] text-transparent drop-shadow-[0_0_10px_rgba(147,197,253,0.5)]">
@@ -28,13 +28,13 @@ export function Hero() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.1}>
+        <Reveal delay={0.1} initiallyVisible>
           <p className="mt-10 max-w-3xl text-[22px] md:text-[28px] font-semibold tracking-tight text-foreground">
           お店看板、クルマやバイクのドレスアップなど、多彩なカッティングステッカー・デザインを1枚から丁寧に仕上げます
           </p>
         </Reveal>
 
-        <Reveal delay={0.18}>
+        <Reveal delay={0.18} initiallyVisible>
           <div className="mt-12 flex flex-wrap items-center justify-center gap-3 text-sm font-semibold">
             <Link
               href="#about"

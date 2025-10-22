@@ -4,8 +4,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "./components/ThemeProvider";
-import { ThemeToggle } from "./components/ThemeToggle";
-import { BackToTop } from "./components/BackToTop";
+import { siteDescription, siteName, siteSummary, siteUrl } from "@/lib/seo";
+import { FloatingControls } from "./components/FloatingControls";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,17 +17,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cuttingworksburst.com";
-const siteName = "Cutting Works Burst";
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: siteName,
     template: `%s | ${siteName}`,
   },
-  description:
-    "切り文字ステッカーやデザイン制作の実績を紹介する Cutting Works Burst のポートフォリオサイト。店舗看板・車両ラッピングなど幅広く対応します。",
+  description: siteDescription,
   keywords: [
     "切り文字ステッカー",
     "カッティングシート",
@@ -56,8 +52,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: siteName,
-    description:
-      "切り文字ステッカー制作・看板デザインのポートフォリオ Cutting Works Burst。",
+    description: siteSummary,
     images: ["/hero-bg.svg"],
   },
   alternates: {
@@ -99,8 +94,7 @@ export default function RootLayout({
           `}
         </Script>
         <ThemeProvider>
-          <ThemeToggle className="fixed right-5 top-5 z-[60]" />
-          <BackToTop className="fixed left-5 bottom-8 z-[60]" />
+          <FloatingControls />
           <div className="relative min-h-screen overflow-hidden">{children}</div>
           <Analytics />
         </ThemeProvider>

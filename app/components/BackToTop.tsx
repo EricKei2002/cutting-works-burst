@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn, scheduleIdle } from "@/lib/utils";
 
 type BackToTopProps = {
   className?: string;
@@ -13,14 +13,24 @@ export function BackToTop({ className }: BackToTopProps) {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    let hasListener = false;
+
     const handleScroll = () => {
       setIsVisible(window.scrollY > 240);
     };
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    const cancelIdle = scheduleIdle(() => {
+      handleScroll();
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      hasListener = true;
+    });
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      cancelIdle?.();
+      if (hasListener) {
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
   }, []);
 
   const handleClick = useCallback(() => {

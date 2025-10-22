@@ -8,19 +8,20 @@ Next.js 15 + TypeScript + Tailwind CSS + Framer Motion によるWEBサイトで�
 - 言語: TypeScript
 - スタイリング: Tailwind CSS v4
 - アニメーション: Framer Motion
+- パッケージマネージャ: Bun
 - デプロイ: Vercel
 - 仕様・参考: [Figmaサイト](https://item-sync-83384163.figma.site/)
 
 ## セットアップ
 
 ```bash
-npm install
+bun install
 ```
 
 ## 開発
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 - 開発URL: [http://localhost:3000](http://localhost:3000)
@@ -30,8 +31,8 @@ npm run dev
 ## ビルド
 
 ```bash
-npm run build
-npm start
+bun run build
+bun run start
 ```
 
 ## デプロイ（Vercel）
@@ -43,8 +44,7 @@ npm start
 CLIでも可能です:
 
 ```bash
-npm i -g vercel
-vercel
+bunx vercel
 ```
 
 ## 画像・作品の追加/差し替え

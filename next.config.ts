@@ -3,7 +3,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   webpack(config, { dev }) {
-    if (dev) {
+    if (!dev) {
+      // Keep full source maps in production builds only
       config.devtool = "source-map";
     }
 

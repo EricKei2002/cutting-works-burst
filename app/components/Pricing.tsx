@@ -1,7 +1,7 @@
 "use client";
 
 import { Reveal } from "../components/Reveal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Size = 5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55 | 60;
 type ShortSide = 5 | 10 | 15 | 20;
@@ -61,6 +61,24 @@ export function Pricing() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const longSides: Size[] = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60];
   const shortSides: ShortSide[] = [5, 10, 15, 20];
+
+  useEffect(() => {
+    if (typeof document === "undefined") {
+      return;
+    }
+
+    const originalOverflow = document.body.style.overflow;
+
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [isModalOpen]);
 
   return (
     <section id="pricing" className="w-full bg-background py-24 md:py-32">
@@ -169,8 +187,8 @@ export function Pricing() {
 
       {/* モーダル */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center  backdrop-blur-sm">
-          <div className="mx-4 max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl border border-foreground/10 bg-background/95 p-6 shadow-2xl dark:bg-white/10">
+        <div className="fixed inset-0 z-50 flex items-center justify-center  backdrop-blur-sm ">
+          <div className="mx-4 max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl border border-foreground/10 bg-white p-6 shadow-2xl dark:bg-white/10">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-lg font-semibold text-foreground">詳細料金表</h3>
               <button

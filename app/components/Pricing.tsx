@@ -169,7 +169,7 @@ export function Pricing() {
 
       {/* モーダル */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center  backdrop-blur-sm">
           <div className="mx-4 max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl border border-foreground/10 bg-background/95 p-6 shadow-2xl dark:bg-white/10">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-lg font-semibold text-foreground">詳細料金表</h3>

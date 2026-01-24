@@ -1,70 +1,97 @@
-<!-- cspell:ignore kato -->
-
 # Cutting Works Burst
 
-Next.js 15 + TypeScript + Tailwind CSS + Framer Motion によるWEBサイトです。スクロール時のフェードやホバー演出を取り入れ、作品ギャラリーをシンプルに閲覧できます。
+![Project Banner](/opengraph-image.png)
 
-- フレームワーク: Next.js (App Router)
-- 言語: TypeScript
-- スタイリング: Tailwind CSS v4
-- アニメーション: Framer Motion
-- パッケージマネージャ: Bun
-- デプロイ: Vercel
-- 仕様・参考: [Figmaサイト](https://item-sync-83384163.figma.site/)
+「Cutting Works Burst」は、カッティングステッカーの制作・販売を行う「Cutting Works」の公式ポートフォリオサイトです。
+Next.js 15 (App Router) と Tailwind CSS v4 を基盤に、Framer Motion による洗練されたアニメーションを組み合わせ、直感的かつ没入感のあるギャラリー体験を提供します。
 
-## セットアップ
+## 🚀 主な機能 (Features)
+
+### 1. モダンなギャラリー UI
+
+- **Visual Browsing**: 大量の制作実績をグリッドレイアウトで美しく表示。
+- **Interactive Gallery**: ホバーエフェクトやトランジションにより、ユーザーが楽しみながらデザインを探せるインターフェースを実現。
+
+### 2. 高度なアニメーション
+
+- **Framer Motion Integration**: スクロール連動のフェードインや、要素の登場演出を実装。シンプルながらも動きのあるWeb体験を提供します。
+
+### 3. 最適化された開発環境
+
+- **Bun Runtime**: 超高速なJavaScriptランタイム「Bun」を採用し、依存関係のインストールからビルドまでを高速化。
+- **Tailwind CSS v4**: 最新のCSSエンジンを活用し、ゼロランタイムのハイパフォーマンスなスタイリングを実現。
+
+## 🛠 技術スタック (Tech Stack)
+
+### Core
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Runtime**: [Bun](https://bun.sh/)
+
+### Visuals & Styling
+
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animation**: [Framer Motion](https://www.framer.com/motion/)
+- **Design Source**: [Figma](https://item-sync-83384163.figma.site/)
+
+### Deployment
+
+- **Platform**: [Vercel](https://vercel.com/)
+
+## 💻 セットアップ (Getting Started)
+
+プロジェクトをローカル環境で実行する手順です。
+
+### 1. 依存関係のインストール
 
 ```bash
 bun install
 ```
 
-## 開発
+### 2. 開発サーバーの起動
 
 ```bash
 bun run dev
 ```
 
-- 開発URL: [http://localhost:3000](http://localhost:3000)
-- ページ編集: `app/page.tsx`
-- セクション: `app/components/`（`Hero`, `About`, `Works`, `Contact`, `Footer`）
+`http://localhost:3000` でサイトにアクセスできます。
+エディタで `app/page.tsx` を編集すると、ブラウザが自動的に更新されます。
 
-## ビルド
+## 📂 プロジェクト構造 (Project Structure)
 
-```bash
-bun run build
-bun run start
+```
+app/
+├── components/      # UI Components (Hero, About, Works, Contact, Footer)
+├── data/            # Static Data (works.ts - Gallery items)
+├── page.tsx         # Main entry point
+└── layout.tsx       # Root layout
+public/
+└── works/           # Work images (e.g., kato-body-works.jpg)
 ```
 
-## デプロイ（Vercel）
+## 🎨 画像・作品の追加
 
-1. リポジトリをGitHubへプッシュ
-2. Vercel ダッシュボードで「New Project」→ 対象リポジトリを選択
-3. 環境に応じてオプションを設定しデプロイ
+ギャラリーのデータは `app/data/works.ts` で一元管理されています。
 
-CLIでも可能です:
-
-```bash
-bunx vercel
-```
-
-## 画像・作品の追加/差し替え
-
-- 画像は `public/works/` 配下に保存します（例: `public/works/kato-body-works.jpg`）。
-- ギャラリーのデータは `app/data/works.ts` で管理しています。以下のように追記/編集してください。
+1. **画像の保存**: `public/works/` に画像ファイルを配置します。
+2. **データの追加**: `app/data/works.ts` に以下の形式で追記します。
 
 ```ts
 export const worksItems = [
   {
     id: 3,
     src: "/works/kato-body-works.jpg",
-    alt: "加藤自動車鈑金 外観・ウィンドウサイン",
+    alt: "作品タイトルまたは説明",
   },
+  // ...
 ];
 ```
 
-- 画像読込エラー時は自動で `/file.svg` にフォールバックします（`app/components/Works.tsx` の `WorkImage`）。
-- トリミング方法を変えたい場合は `object-cover`/`object-contain` を調整してください。
-
-## ライセンス
+## 📜 ライセンス
 
 MIT
+
+---
+
+© 2026 Eric Kei / Cutting Works Burst

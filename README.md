@@ -1,6 +1,6 @@
 # Cutting Works Burst
 
-![Project Banner](/opengraph-image.png)
+![Project Banner](public/bg-cwb.jpeg)
 
 「Cutting Works Burst」は、カッティングステッカーの制作・販売を行う「Cutting Works」の公式ポートフォリオサイトです。
 Next.js 15 (App Router) と Tailwind CSS v4 を基盤に、Framer Motion による洗練されたアニメーションを組み合わせ、直感的かつ没入感のあるギャラリー体験を提供します。
